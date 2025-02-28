@@ -1,0 +1,17 @@
+{
+	"name": "serverlesssqlcodes",
+	"properties": {
+		"content": {
+			"query": "-- master key creation for external table\nCREATE MASTER KEY ENCRYPTION by PASSWORD='organ02@2025'\n\n-- cretae credential\nCREATE DATABASE SCOPED CREDENTIAL azurefileproxy\nWITH\nIDENTITY = 'Managed Identity'\n\n-- creat external data source\n-- add the linked services to connec to to the azure\nCREATE EXTERNAL DATA SOURCE ds_sargsynapse \nWITH\n(\n    LOCATION= 'https://sargsynapse.dfs.core.windows.net/raw'\n\n)\n\n-- This is auto-generated code\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK '/survey/annual-enterprise-survey-2023-financial-year-provisional-size-bands (1).csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0'\n    ) AS [result]\n\n\n-- create file format\nCREATE EXTERNAL FILE FORMAT ext_csv\nWITH (\n    FORMAT_TYPE= DELIMITEDTEXT, \n    FORMAT_OPTIONS(\n        FIELD_TERMINATOR=''\n    )\n)\n\n\n--create external table ",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "azure_external",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
