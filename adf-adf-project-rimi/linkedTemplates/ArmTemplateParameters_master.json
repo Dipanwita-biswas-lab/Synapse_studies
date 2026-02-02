@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-adf-project-rimi"
+		},
+		"linkedService_Azure_Datalake_accountKey": {
+			"value": ""
+		},
+		"linkedService_Azure_SQL_password": {
+			"value": ""
+		},
+		"linkedService_Azure_Datalake_properties_typeProperties_url": {
+			"value": "https://saadfprojectrimi.dfs.core.windows.net/"
+		},
+		"linkedService_Azure_SQL_properties_typeProperties_server": {
+			"value": "sqlserver-rg-adf-project.database.windows.net"
+		},
+		"linkedService_Azure_SQL_properties_typeProperties_database": {
+			"value": "sqldb-rg-adf-project"
+		},
+		"linkedService_Azure_SQL_properties_typeProperties_userName": {
+			"value": "dippybiswas"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
