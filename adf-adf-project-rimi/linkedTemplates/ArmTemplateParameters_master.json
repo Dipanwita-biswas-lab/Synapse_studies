@@ -5,11 +5,20 @@
 		"factoryName": {
 			"value": "adf-adf-project-rimi"
 		},
+		"external_azure_container_accountKey": {
+			"value": ""
+		},
 		"linkedService_Azure_Datalake_accountKey": {
 			"value": ""
 		},
 		"linkedService_Azure_SQL_password": {
 			"value": ""
+		},
+		"rg-synapse-workspace-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:rg-synapse-workspace.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"external_azure_container_properties_typeProperties_url": {
+			"value": "https://sargsynapse.dfs.core.windows.net/"
 		},
 		"linkedService_Azure_Datalake_properties_typeProperties_url": {
 			"value": "https://saadfprojectrimi.dfs.core.windows.net/"
@@ -22,6 +31,9 @@
 		},
 		"linkedService_Azure_SQL_properties_typeProperties_userName": {
 			"value": "dippybiswas"
+		},
+		"rg-synapse-workspace-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://sasynapsedefault.dfs.core.windows.net"
 		},
 		"containerUri": {
 			"value": ""

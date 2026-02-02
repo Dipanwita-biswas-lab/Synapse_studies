@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adf-adf-project-rimi"
 		},
+		"external_azure_container_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'external_azure_container'"
+		},
 		"linkedService_Azure_Datalake_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'linkedService_Azure_Datalake'"
@@ -14,6 +18,15 @@
 		"linkedService_Azure_SQL_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'linkedService_Azure_SQL'"
+		},
+		"rg-synapse-workspace-WorkspaceDefaultSqlServer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'rg-synapse-workspace-WorkspaceDefaultSqlServer'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:rg-synapse-workspace.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"external_azure_container_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sargsynapse.dfs.core.windows.net/"
 		},
 		"linkedService_Azure_Datalake_properties_typeProperties_url": {
 			"type": "string",
@@ -30,6 +43,10 @@
 		"linkedService_Azure_SQL_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "dippybiswas"
+		},
+		"rg-synapse-workspace-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sasynapsedefault.dfs.core.windows.net"
 		},
 		"containerUri": {
 			"type": "string",
@@ -64,6 +81,12 @@
 					"linkedService_Azure_SQL_password": {
 						"value": "[parameters('linkedService_Azure_SQL_password')]"
 					},
+					"external_azure_container_accountKey": {
+						"value": "[parameters('external_azure_container_accountKey')]"
+					},
+					"rg-synapse-workspace-WorkspaceDefaultSqlServer_connectionString": {
+						"value": "[parameters('rg-synapse-workspace-WorkspaceDefaultSqlServer_connectionString')]"
+					},
 					"linkedService_Azure_Datalake_properties_typeProperties_url": {
 						"value": "[parameters('linkedService_Azure_Datalake_properties_typeProperties_url')]"
 					},
@@ -75,6 +98,12 @@
 					},
 					"linkedService_Azure_SQL_properties_typeProperties_userName": {
 						"value": "[parameters('linkedService_Azure_SQL_properties_typeProperties_userName')]"
+					},
+					"external_azure_container_properties_typeProperties_url": {
+						"value": "[parameters('external_azure_container_properties_typeProperties_url')]"
+					},
+					"rg-synapse-workspace-WorkspaceDefaultStorage_properties_typeProperties_url": {
+						"value": "[parameters('rg-synapse-workspace-WorkspaceDefaultStorage_properties_typeProperties_url')]"
 					}
 				}
 			},
