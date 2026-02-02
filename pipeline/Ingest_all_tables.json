@@ -1,0 +1,87 @@
+{
+	"name": "Ingest_all_tables",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('input')",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Ingestion",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"schema": {
+										"value": "@item().schema",
+										"type": "Expression"
+									},
+									"table": {
+										"value": "@item().table",
+										"type": "Expression"
+									},
+									"incremental_column": {
+										"value": "@item().watermarkColumn",
+										"type": "Expression"
+									},
+									"container": "raw"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"input": {
+				"type": "Array",
+				"defaultValue": [
+					{
+						"table": "DimUser",
+						"schema": "dbo",
+						"watermarkColumn": "updated_at",
+						"container": "raw"
+					},
+					{
+						"table": "DimArtist",
+						"schema": "dbo",
+						"watermarkColumn": "updated_at",
+						"container": "raw"
+					},
+					{
+						"table": "DimTrack",
+						"schema": "dbo",
+						"watermarkColumn": "updated_at",
+						"container": "raw"
+					},
+					{
+						"table": "FactStream",
+						"schema": "dbo",
+						"watermarkColumn": "stream_timestamp",
+						"container": "raw"
+					}
+				]
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-02-02T19:21:01Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
