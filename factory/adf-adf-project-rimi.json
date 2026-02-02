@@ -1,0 +1,9 @@
+{
+	"name": "adf-adf-project-rimi",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "2035cc8f-0b0f-4b52-ac42-a1a7d8768849",
+		"tenantId": "9919a9bf-4a23-4438-8c7e-9970d806efb2"
+	}
+}
